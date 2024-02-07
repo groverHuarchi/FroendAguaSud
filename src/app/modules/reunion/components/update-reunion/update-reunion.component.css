@@ -1,0 +1,12 @@
+.reunion-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.reunion-container > * {
+    width: 100%;
+}
+input{
+    text-transform: uppercase;
+}
+

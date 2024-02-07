@@ -1,0 +1,12 @@
+<h1 mat-dialog-title> Confirmacion</h1>
+<div>
+    <p> Estas seguro de elimiar al usuario </p>
+    <p> {{data.nombre+" "+data.apellidoPaterno+" "+data.apellidoMaterno}}</p>
+</div>
+
+<div mat-dialog-actions>
+
+    <button mat-button (click)="siEliminar()" cdkFocusInitial>Si</button>
+    <button mat-button (click)="onNoclick()">No</button>
+    
+</div>

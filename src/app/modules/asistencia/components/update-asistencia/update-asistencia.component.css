@@ -1,0 +1,8 @@
+.asistencia-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.medidor-container > * {
+    width: 100%;
+}

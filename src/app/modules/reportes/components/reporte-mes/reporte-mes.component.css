@@ -1,0 +1,43 @@
+.example-card {
+    max-width: 750px;
+  }
+  
+  .example-header-image {
+    background-image: url('src/assets/SoloLogo.png');
+    background-size: cover;
+  }
+
+  
+
+  .centerH1{
+    text-align: center;
+  }
+
+  .divTDEsTitu{
+    margin-top: 10px;
+  }
+  
+  .datoSocioMedidor{
+    display: flex;
+    justify-content: start;
+  }
+
+  .ajustarSocio{
+    margin-left: 30px;
+  }
+  .ajustar{
+    margin-left: auto;
+  }
+
+  .divsepa{
+    margin-top: 5px;
+  }
+
+  .marginizq{
+    margin-left: 35px;
+  }
+
+  .displeyFles{
+    display: flex;
+  }
+

@@ -1,0 +1,62 @@
+<h2 mat-dialog-title> {{estadoFormulario}} Medidor </h2>
+<mat-dialog-content>
+
+    <form [formGroup]="medidorForm">
+        <div class="medidor-container">
+            <mat-form-field>
+                <input matInput placeholder="Serie" formControlName="serie" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Direccion" formControlName="direccion" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput  type="number"  placeholder="Lectura Inicial" formControlName="lecturaInicial" required>
+            </mat-form-field>
+            
+            <!-- select de socios-->
+            <mat-form-field>
+                <mat-label> Socio </mat-label>
+                <mat-select formControlName = "socio"><!--socio se obtiene de MAT_DIALOG_DATA new medidor componet-->
+                    <mat-option *ngFor="let socio of socios" [value]="socio.idSocio">
+                        {{socio.nombre +" "+ socio.apellidoPaterno }}
+                    </mat-option>
+                </mat-select>   
+            </mat-form-field>
+            <!--fin del seleccionar socios-->
+            <mat-form-field>
+                <mat-label> Estado </mat-label>
+                <mat-select formControlName = "estado">
+                    <mat-option *ngFor="let est of estadoMedidor" [value]="est" >
+                        {{ est }}
+                    </mat-option>
+                </mat-select>  
+            </mat-form-field>
+        
+        </div>
+        <div class="divFile">
+            <mat-label>Croquis: </mat-label>   
+            <label for="file-upload" class="subir">Subir acrchivo</label>
+            <input id="file-upload" 
+                    accept="image/png, image/jpg, image/jpeg " 
+                    (change)="onfileChange($event)"
+                    type="file"
+                    formArrayName="croquis"
+                    class="input-File"
+            >
+             <span> {{"  "+nameImg}}</span>       
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+        
+        <button mat-button color="primary"  [disabled]="medidorForm.invalid" (click)="actualizarMedidor()" >
+        <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="cerrarPantallaActualizar()">
+        <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>
+

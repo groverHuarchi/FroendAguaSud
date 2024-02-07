@@ -1,0 +1,14 @@
+<h1 mat-dialog-title> Confirmacion</h1>
+<div>
+    <p> Estas seguro de elimiar medidor </p>
+    <samp> codigo medidor: {{data.medidor.idMedidor}}</samp>
+    <br>
+    <samp> usuario: {{data.medidor.socio.nombre+" "+data.medidor.socio.apellidoPaterno+" "+data.medidor.socio.apellidoMaterno}}</samp>
+</div>
+
+<div mat-dialog-actions>
+
+    <button mat-button (click)="siEliminar()" cdkFocusInitial>Si</button>
+    <button mat-button (click)="onNoclick()">No</button>
+    
+</div>

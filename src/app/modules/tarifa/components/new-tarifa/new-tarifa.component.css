@@ -1,0 +1,8 @@
+.tarifa-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.tarifa-container > * {
+    width: 100%;
+}

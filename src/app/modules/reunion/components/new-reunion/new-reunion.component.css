@@ -1,0 +1,15 @@
+.reunion-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.reunion-container > * {
+    width: 100%;
+}
+input{
+    text-transform: uppercase;
+}
+
+.mat-form-field-autofill-control-textarea {
+    height: 500px; /* Ajusta la altura según tus necesidades */
+  }

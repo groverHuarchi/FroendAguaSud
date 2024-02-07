@@ -1,0 +1,79 @@
+<div #contenido>
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>AguaSud</mat-card-title>
+      <mat-card-subtitle>Coperativa Rancho Sud</mat-card-subtitle>
+
+    </mat-card-header>
+
+    <mat-card-content>
+        <div >
+            <div class="centerH1">
+                <h1>RECIBO</h1>
+            </div>
+            <div class="divTDEsTitu">
+                <h4>Mes Consumo : {{data.recibo.lecturacion.mesLecturacion}}</h4>
+            </div>
+            
+            <div class="datoSocioMedidor">
+                <div class="ajustarSocio">
+                    <h4>Socio : {{data.recibo.lecturacion.medidor.socio.nombre+" "+data.recibo.lecturacion.medidor.socio.apellidoPaterno+" "+data.recibo.lecturacion.medidor.socio.apellidoMaterno}}</h4>
+                </div>
+                <div class="ajustar">
+                    <h4> codigo Medidor : {{data.recibo.lecturacion.medidor.idMedidor}}</h4>
+                </div>
+
+            </div>
+            <div class="divsepa">
+                <h4>Direccion : {{data.recibo.lecturacion.medidor.direccion}}</h4>
+            </div>
+            <div class="divsepa">
+                
+                <h4>Fecha de emision : {{data.recibo.fechaEmision | date}} </h4>
+                
+            </div>
+            <div class="datoSocioMedidor">
+                
+                <div>
+                    <h4 >Lec. Ant. : {{data.recibo.lecturacion.lecturaAnterior}} </h4> 
+                </div>
+                <div class="marginizq">
+                    <h4>Lec. Act. : {{data.recibo.lecturacion.lecturaActual}} </h4>
+                </div>    
+                <div class="marginizq">
+                    <h4> Consumo : {{data.recibo.lecturacion.consumo}}  </h4>
+                </div>    
+                    
+                <div class="ajustar">
+                    <h4> Tarifa Consumo : {{data.recibo.lecturacion.tarifa.nombre}}</h4>
+                </div>
+
+            </div>
+            <div class="displeyFles">
+                
+                <div class="">
+                    <h4> Reunion : {{(data.recibo.lecturacion.mesLecturacion | date:"MMMM") | uppercase}}  </h4> 
+                </div>
+                <div class="marginizq">
+                    <h4> Asistencia : Presente </h4>
+                </div>    
+                <div class="marginizq">
+                    <h4> Multa : 0 Bs. </h4>
+                </div>  
+                
+            </div>
+        </div> 
+      
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button (click)="pagarREcibo()" >Realizar pago  </button>
+      
+
+      <button mat-button (click)="generatePDF1()">Generar PDF</button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>  
+  

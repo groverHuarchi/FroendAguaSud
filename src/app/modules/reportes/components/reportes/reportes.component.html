@@ -1,0 +1,86 @@
+<mat-card>
+    <h2 class="alinear">Generacion de Reportes</h2>
+    <mat-card-header>
+        <div>
+            
+                <mat-label>Generar medidores para corte</mat-label>
+                
+            
+            
+        </div>
+    </mat-card-header>
+    <mat-card-header>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-start">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-raised-button color="primary" (click)="GenerarMedidoresEnCorte()" >Generar</button>
+                </li>
+            </ul>
+        </div>
+    </mat-card-header>
+    <br>
+    <hr>
+    <br>
+    <mat-card-header>
+        <div>
+            
+                <mat-label>Generar reporte de recibos emitidos por mes</mat-label>
+                
+            
+        </div>
+    </mat-card-header>
+    <mat-card-header>
+        
+            <div class="medidor-container">
+                
+                
+                <!-- select de socios-->
+                <mat-form-field>
+                    <mat-label> Mes </mat-label>
+                    <mat-select [(ngModel)]="mesSelecionado">
+                        <mat-option *ngFor="let mes of listaMes" [value]='mes' >
+                            {{mes}}
+                        </mat-option>
+                    </mat-select>   
+                </mat-form-field>
+                <!--fin del seleccionar socios-->
+                <button mat-raised-button class="espacio" color="primary" (click)="GenerarReportePorMes()" >
+                    Generar
+                </button>
+            </div>     
+     
+    </mat-card-header>
+
+    <br>
+    <hr>
+    <br>
+    <mat-card-header>
+        <div>
+            
+                <mat-label>Generar Reporte de recibos pagados por rango de fechas</mat-label>
+                
+            
+        </div>
+    </mat-card-header>
+    <mat-card-header>
+
+        <form [formGroup]="formularioFechas" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <mat-label>Selecione el rango de fechas</mat-label>
+              <mat-date-range-input [rangePicker]="picker" [formGroup]="formularioFechas.get('rangoFechas')">
+                <input matStartDate placeholder="Fecha inicio" formControlName="start">
+                <input matEndDate placeholder="Fecha fin" formControlName="end">
+              </mat-date-range-input>
+              <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+          
+            <!-- Botón para obtener las fechas -->
+            <button mat-raised-button class="espacio" color="primary"  type="submit">Buscar Recibos</button>
+          </form>
+          
+          
+    </mat-card-header>
+
+</mat-card>

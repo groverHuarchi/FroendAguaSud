@@ -1,0 +1,8 @@
+.socio-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.socio-container > * {
+    width: 100%;
+}

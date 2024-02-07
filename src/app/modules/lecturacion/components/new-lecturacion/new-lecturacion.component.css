@@ -1,0 +1,25 @@
+ul li {
+    list-style: none;
+}
+
+.alinear{
+    text-align: center;
+    margin-top: 20px;
+}
+
+mat-form-field{
+    width: 140%;
+}
+
+table{
+    width: 100%;
+}
+
+.lectura-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.lectura-container > * {
+    width: 100%;
+}

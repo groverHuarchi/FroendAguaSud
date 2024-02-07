@@ -1,0 +1,83 @@
+<mat-card>
+
+    <h2 class="alinear">Listado de Medidores</h2>
+    <mat-card-header>
+        <div>
+            <mat-form-field hintLabel="buscar medidor por codigo " appearance="fill">
+                <mat-label>Buscar Medidor</mat-label>
+                <input matInput #input (keyup)="buscar(input.value)">
+            </mat-form-field>
+            <samp>{{verificaMedidor}}</samp>
+        </div>
+    </mat-card-header>
+    <mat-card-header>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-raised-button color="primary" (click)="openMedidordialogo()">Agregar Medidor</button>
+                </li>
+            </ul>
+        </div>
+    </mat-card-header>
+    <div mat-card-image></div>
+
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSourse">
+            <!--id colum-->
+            <ng-container matColumnDef="idMedidor">
+                <th mat-header-cell *matHeaderCellDef>Codigo Medidor</th>
+                <td mat-cell *matCellDef="let element">{{element.idMedidor}}</td>
+            </ng-container>
+            
+            <!--serie columna-->
+            <ng-container matColumnDef="serie">
+                <th mat-header-cell *matHeaderCellDef>Serie</th>
+                <td mat-cell *matCellDef="let element">{{element.serie}}</td>
+            </ng-container>
+
+            <!--direccion columna-->
+            <ng-container matColumnDef="direccion">
+                <th mat-header-cell *matHeaderCellDef>direccion</th>
+                <td mat-cell *matCellDef="let element">{{element.direccion}}</td>
+            </ng-container>
+
+            <!--lectura inicial columna-->
+            <ng-container matColumnDef="lecturaInicial">
+                <th mat-header-cell *matHeaderCellDef>Lectura Inicial </th>
+                <td mat-cell *matCellDef="let element">{{element.lecturaInicial}}</td>
+            </ng-container>
+
+            <!--socio columna-->
+            <ng-container matColumnDef="socio">
+                <th mat-header-cell *matHeaderCellDef>socio</th>
+                <td mat-cell *matCellDef="let element">{{element.socio.nombre+" "+element.socio.apellidoPaterno}}</td>
+            </ng-container>
+            <!-- acciones -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element; let i = index;">
+                    <button mat-icon-button color="accent" (click)="editar(element.idMedidor, element.serie, element.direccion, element.estado, element.lecturaInicial, element.socio )">
+                        <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent">
+                        <mat-icon aria-label="Delete" (click)="eliminarMedidor(element)">delete</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="verMedidor(element)">
+                        <mat-icon aria-label="Delete">visibility</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+        <!--paginacion-->
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+    </mat-card-content>
+
+</mat-card>

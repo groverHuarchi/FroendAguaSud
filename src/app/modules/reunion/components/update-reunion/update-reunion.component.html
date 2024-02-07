@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>  Actualizar Reunion </h2>
+<mat-dialog-content>
+
+    <span >Fecha a editar: {{data.mesAnhoReunion}}</span>
+
+    <form [formGroup]="ReunionForm" style="margin-top: 10px;">
+        <div class="reunion-container">
+            
+           
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Descripcion de la reunion</mat-label>
+                <textarea matInput placeholder="Ej. Puntos a tratar en la reunion" formControlName="descripcion" maxlength="255"></textarea>
+                <mat-hint >{{ ReunionForm.get('descripcion')?.value.length }}/255 caracteres como maximo</mat-hint>
+            </mat-form-field>
+            
+           
+            <mat-form-field style="margin-top: 15Px;">
+                <mat-label>Estado Reunion</mat-label>
+                <mat-select formControlName="estado">
+                    <mat-option *ngFor="let est of estadoArray" [value]="est.value">
+                    {{est.vista}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-button color="primary"  [disabled]="ReunionForm.invalid" (click)="onSave()" >
+        <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="cerrarPantallaGuardar()">
+        <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>
+

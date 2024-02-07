@@ -1,0 +1,75 @@
+<mat-card>
+
+    <h2 class="alinear">Listado de Reuniones</h2>
+    <mat-card-header>
+        <div>
+            <mat-form-field hintLabel="Buscar Reunion por mes o año" appearance="fill">
+                <mat-label>Buscar Reunion</mat-label>
+                <input matInput #input (keyup)="buscarReunionCaracter(input.value)">
+            </mat-form-field>
+            <span style="color: crimson;">{{mensaje}}</span>
+        </div>
+    </mat-card-header>
+    <mat-card-header>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-raised-button color="primary" (click)="openMedidordialogo()">Crear Reunion</button>
+                </li>
+            </ul>
+        </div>
+    </mat-card-header>
+    <div mat-card-image></div>
+
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSourse" >
+            <!--id colum-->
+            <ng-container matColumnDef="idReunion">
+                <th mat-header-cell *matHeaderCellDef>Cod. Reunion</th>
+                <td mat-cell *matCellDef="let element">{{element.idReunion}}</td>
+            </ng-container>
+            
+            <!--serie columna-->
+            <ng-container matColumnDef="fechaReunion">
+                <th mat-header-cell *matHeaderCellDef>fecha</th>
+                <td mat-cell *matCellDef="let element">{{element.mesAnhoReunion}}</td>
+            </ng-container>
+
+            <!--direccion columna-->
+            <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                <td mat-cell *matCellDef="let element">{{element.descripcion | textCorto : 20}}</td>
+            </ng-container>
+
+             <!--estado columna-->
+             <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef>estado</th>
+                <td mat-cell *matCellDef="let element">{{element.estado | estadoReunion }}</td>
+            </ng-container>
+
+            <!-- acciones -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Acciones</th>
+                <td mat-cell *matCellDef="let element; let i = index;">
+                    <button mat-icon-button color="accent"  (click)="actualizar(element.idReunion, element.mesAnhoReunion, element.estado, element.descripcion )">
+                        <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="verReunion(element)">
+                        <mat-icon aria-label="Delete">visibility</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+        <!--paginacion-->
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+    </mat-card-content>
+
+</mat-card>

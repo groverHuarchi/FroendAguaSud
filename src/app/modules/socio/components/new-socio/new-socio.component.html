@@ -1,0 +1,38 @@
+<h2 mat-dialog-title> Nuevo Socio </h2>
+<mat-dialog-content>
+
+    <form [formGroup]="socioForm">
+        <div class="socio-container">
+            <mat-form-field>
+                <input matInput  placeholder="Ci" formControlName="ci" pattern="[0-9]+" required="">
+            </mat-form-field>
+            <div *ngIf="socioForm.get('ci')?.hasError('ciExistente')" style="color: crimson;">
+                ¡El ci ya existe!
+            </div>
+            <div *ngIf="socioForm.get('ci')?.hasError('ciLengthMin')" style="color: crimson;">
+                ¡Caracteres validos entre 7 y 8 caracteres!
+            </div>
+            <mat-form-field>
+                <input matInput placeholder="Nombre" formControlName="nombre" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Primer Apellido" formControlName="primerApellido" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Segundo Apellido" formControlName="segundoApellido">
+            </mat-form-field>
+            
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-button color="primary" (click)="guardarDatosSocio()" [disabled]="socioForm.invalid">
+        <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="cerrarPantallaGuardar()">
+        <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>

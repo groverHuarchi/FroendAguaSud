@@ -1,0 +1,16 @@
+ul li {
+    list-style: none;
+}
+
+.alinear{
+    text-align: center;
+    margin-top: 20px;
+}
+
+mat-form-field{
+    width: 140%;
+}
+
+table{
+    width: 100%;
+}

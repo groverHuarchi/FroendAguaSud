@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>  Actualizar Asistencia </h2>
+<div>
+    <samp>
+       Socio : {{data.asistencia.socio.nombre+" " }}
+        {{data.asistencia.socio.apellidoPaterno+" "}}
+        {{data.asistencia.socio.apellidoMaterno+" " }}
+    </samp>
+</div>
+<div>
+    <samp>
+        Mes de reunion : {{data.asistencia.reunion.mesAnhoReunion}}
+    </samp>
+</div>
+<br>
+<mat-dialog-content>
+
+
+
+    <form [formGroup]="asistenciaForm">
+        
+        <div class="asistencia-container">
+            <mat-form-field>
+                <mat-label> Estado </mat-label>
+                <mat-select formControlName = "estado">
+                    <mat-option *ngFor="let est of estadoAsistencia" [value]="est" >
+                        {{ est }}
+                    </mat-option>
+                </mat-select>  
+            </mat-form-field>
+            
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-button color="primary" (click)="actualizarEStado()">
+        <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="cerrarPantallaActualizar()" >
+        <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>
+

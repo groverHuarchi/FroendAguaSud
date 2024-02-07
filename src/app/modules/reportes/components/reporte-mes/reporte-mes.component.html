@@ -1,0 +1,56 @@
+<div #contenido>
+    <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>AguaSud</mat-card-title>
+          <mat-card-subtitle>Coperativa Rancho Sud</mat-card-subtitle>
+    
+        </mat-card-header>
+    
+        <mat-card-content>
+            <div >
+                <div class="centerH1">
+                    <h1>REPORTE MES {{data}}</h1>
+                </div>
+                <div class="divTDEsTitu">
+                    <h4>&#8470; Total de recibos : {{recibosTotales}}</h4>
+                </div>
+                
+                <div class="datoSocioMedidor">
+                    <div class="ajustarSocio">
+                        <h4>&#8470; Recibos pagados : {{reciboPagados}}</h4>
+                    </div>
+                </div>
+                <div class="datoSocioMedidor">
+                    <div class="ajustarSocio">
+                        <h4>&#8470; Recibos por cobrar : {{reciboCobrar}}</h4>
+                    </div>
+                </div>
+                
+
+                <div class="datoSocioMedidor">
+                    
+                    <div>
+                        <h4 >Monto total de recibos pagados : {{montoPagados | currency : 'Bs. '}} </h4> 
+                    </div>
+                    <div class="marginizq">
+                        <h4 >Monto total de recibos por Cobrar : {{montoPorCobrar | currency : 'Bs. '}} </h4> 
+                    </div>    
+                    <div class="marginizq">
+                        <h4> Monto total {{data}} : {{totalMes | currency : 'Bs. '}}  </h4>
+                    </div>    
+    
+                </div>
+                
+            </div> 
+          
+        </mat-card-content>
+    
+        <mat-card-actions>
+          <button mat-button >Generar PDF</button>
+          <!-- (click)="generatePDF1()" -->
+        </mat-card-actions>
+    
+      </mat-card>
+    </div>  
+      

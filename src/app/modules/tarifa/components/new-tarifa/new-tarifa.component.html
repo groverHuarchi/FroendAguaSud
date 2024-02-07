@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>  {{estadoFormulario}} Tarifa </h2><!--{{estadoFormulario}}-->
+<mat-dialog-content>
+
+    <form [formGroup]="tarifaForm" ><!---->
+        <div class="tarifa-container">
+            
+            <mat-form-field>
+                <input matInput placeholder="Nombre" formControlName="nombre" required>
+                <div *ngIf="tarifaForm.get('nombre')?.hasError('nombreExistente')" style="color: crimson;">
+                    ¡La nombre ya existe!
+                  </div>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" matInput placeholder="Minimo Consumo" formControlName="minConsumo">
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" matInput placeholder="Maximo Consumo" formControlName="maxConsumo">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input type="number" matInput placeholder="Precio" formControlName="precio">
+            </mat-form-field>
+            
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-button color="primary" (click)="guaradarDatosTarifa()" [disabled]="tarifaForm.invalid"> <!---->
+        <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="cerrarPantallaGuardar()" >
+        <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>

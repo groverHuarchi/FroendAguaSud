@@ -1,0 +1,26 @@
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Datos de Socio</mat-card-title>
+      <mat-card-subtitle>Nombre : {{data.socio.nombre+" "+data.socio.primerApellido+" "+data.socio.segundoApellido}}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <p>
+        <strong>Ci:</strong> {{data.socio.ci}}
+        <br>
+        <strong>Fecha Registro:</strong> {{data.socio.fechaRegistro | date}} 
+      </p>
+      <strong>Medidores asignados:</strong>
+      <samp >
+        <p  *ngFor="let element of medidoresSocio">Codigo Medidor: {{element.idMedidor}}   Estado: {{element.estado}}</p>
+    </samp>
+    </mat-card-content>
+    <mat-card-actions>
+      <button button mat-raised-button color="primary" (click)="volver()">Volver</button>
+    </mat-card-actions>
+  </mat-card>
+  
+
+

@@ -1,0 +1,28 @@
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Datos de Medidor</mat-card-title>
+      <mat-card-subtitle>Codigo medidor: {{data.medidor.idMedidor}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="croquisId"  alt="Photo of a Shiba Inu" style="width: 400px; height: 400px;">
+    <mat-card-content>
+      <p>
+        <strong>Socio:</strong> {{data.medidor.socio.nombre+" "+data.medidor.socio.apellidoPaterno+" "+data.medidor.socio.apellidoMaterno }} 
+        <br>
+         <strong>N° de Serie:</strong> {{data.medidor.serie}} 
+        <br>
+         <strong>Fecha reguistro:</strong> {{data.medidor.fechaRegistro | date}} 
+        <br>
+        <strong>Direccion:</strong> {{data.medidor.direccion}}
+        <br>
+        <strong>Estado :</strong> {{data.medidor.estado}}
+
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button button mat-raised-button color="primary" (click)="volver()">Volver</button>
+    </mat-card-actions>
+  </mat-card>
+  
+

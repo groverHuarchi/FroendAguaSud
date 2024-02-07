@@ -1,0 +1,26 @@
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Datos de Reunion</mat-card-title>
+      <mat-card-subtitle>Codigo reunion: {{data.reunion.idReunion}}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <p>
+        <strong>Mes de Reunion: </strong>{{data.reunion.mesAnhoReunion}} 
+        <br>
+         <strong>Estado: </strong>{{data.reunion.estado | estadoReunion}} 
+        <br>
+         <strong>Descripcion de reunion:</strong> 
+        <br>
+        {{data.reunion.descripcion}}
+
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button button mat-raised-button color="primary" (click)="volver()">Volver</button>
+    </mat-card-actions>
+  </mat-card>
+  
+

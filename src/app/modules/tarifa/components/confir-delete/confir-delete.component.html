@@ -1,0 +1,12 @@
+<h1 mat-dialog-title> Confirmacion</h1>
+<div>
+    <p> Esta seguro de dar de baja tarifa </p>
+    <p> {{data.nombre+" "}}{{data.precio | currency : 'Bs. '}}</p>
+</div>
+
+<div mat-dialog-actions>
+
+    <button mat-button (click)="eliminarTarifa()" cdkFocusInitial>Si</button>
+    <button mat-button (click)="onNoclick()">No</button>
+    
+</div>

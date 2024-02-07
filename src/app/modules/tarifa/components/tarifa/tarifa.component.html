@@ -1,0 +1,83 @@
+<mat-card>
+    <h2 class="alinear"> Listado de Tarifas</h2>
+    <mat-card-header>
+        <div>
+            <mat-form-field hintLabel="Buscar tarifa por nombre" appearance="fill">
+                <mat-label>Buscar Tarifa</mat-label>
+                <input matInput #input (keyup)="buscarTarifa(input.value)" >
+            </mat-form-field>
+            <span>{{mensaje}}</span>
+        </div>
+    </mat-card-header>
+    <mat-card-header>
+                
+            <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+                <ul fxLayout="row" fxLayoutGap="20px">
+                    <li>
+                        <button mat-raised-button color="primary" (click)="openTarifaDialog()"> Agregar Tarifa</button>
+                    </li>
+                </ul>
+            </div>
+        
+    </mat-card-header>
+
+    <div mat-card-image></div>
+
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-cell">
+            
+            <!-- Usuario id columna -->
+            <ng-container matColumnDef="idTarifa" > <!-- idTarifa nombre de la columna de html tiene que ser la misna del displayedColumns-->
+                <th mat-header-cell *matHeaderCellDef> N° </th>
+                <td mat-cell *matCellDef="let element">{{element.idTarifa}}</td>
+            </ng-container>
+
+            <!-- nombre columna -->
+            <ng-container matColumnDef="nombre" > <!-- 'nombre' nombre de la columna de html tiene que ser la misna del displayedColumns-->
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+
+            <!-- descripcion  columna -->
+            <ng-container matColumnDef="descripcion" > <!-- ''descripcion'' nombre de la columna de html tiene que ser la misna del displayedColumns-->
+                <th mat-header-cell *matHeaderCellDef> descripcion</th>
+                <td mat-cell *matCellDef="let element">{{element.minConsumo}}m<sup>3</sup> hasta {{element.maxConsumo}}m<sup>3</sup> </td>
+            </ng-container>
+
+            <!-- precio columna -->
+            <ng-container matColumnDef="precio" > <!-- ''precio'' nombre de la columna de html tiene que ser la misna del displayedColumns-->
+                <th mat-header-cell *matHeaderCellDef> precio</th>
+                <td mat-cell *matCellDef="let element">{{element.precio | currency : 'Bs. '}}</td>
+            </ng-container>
+
+
+            <!-- ACIoNES-->
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element; let i=index;">
+                    
+                    <button mat-icon-button color="accent" (click)="editar(element.idTarifa, element.nombre, element.maxConsumo,element.minConsumo,element.precio, element.estado)">
+                        <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
+
+                    <button mat-icon-button color="accent" (click)="eliminar(element.idTarifa, element.nombre, element.descripcion, element.precio, element.estado)" >
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                    </button>
+
+                </td>
+            </ng-container>
+
+
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> <!-- displayedColumns se setea del componente usuarios que uno crea-->
+            <tr mat-row *matRowDef="let row; columns : displayedColumns;"></tr>
+
+            
+        </table>
+
+        <!-- paginacion-->
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    </mat-card-content>
+
+</mat-card>

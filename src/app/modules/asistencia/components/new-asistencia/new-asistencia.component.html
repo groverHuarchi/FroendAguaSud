@@ -1,0 +1,54 @@
+<mat-card>
+
+    <h2 class="alinear">Tomar Asistencias</h2>
+    <mat-card-header>
+        <div>
+            <span>{{mesAnhoReunion}}</span>
+            <br>
+            <span>{{mensaje}}</span>
+        </div>
+    </mat-card-header>
+    
+    <div mat-card-image></div>
+
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSourse" >
+            <!--idSocio colum-->
+            <ng-container matColumnDef="socio">
+                <th mat-header-cell *matHeaderCellDef>Socio</th>
+                <td mat-cell *matCellDef="let element">{{element.socio.nombre+" "+element.socio.apellidoPaterno+" "+element.socio.apellidoMaterno+" ( # "+element.idMedidor +" )"}}</td>
+            </ng-container>
+            
+            
+            <!-- acciones -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Acciones</th>
+                <td mat-cell *matCellDef="let element; let i = index;">
+                    <button mat-icon-button color="primary" [disabled]="botonDeshabilitado" >
+                        <mat-icon aria-label="Edit"  (click)="visualizarDatosMedidorAct(element, i)">check_circle</mat-icon>
+                    </button>
+                    
+                    <button mat-icon-button color="warn">
+                        <mat-icon aria-label="cancel" (click)="visualizarDatosMedidorFal(element, i)">cancel</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+        
+        <!--paginacion-->
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+    </mat-card-content>
+
+    
+
+</mat-card>
+<Div style="margin-top: 10px;" *ngIf="mostrarBotonVolver">
+    <button mat-raised-button color="primary" (click)="volver()">VOLVER</button>
+</Div>

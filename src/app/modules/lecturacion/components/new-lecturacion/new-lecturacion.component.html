@@ -1,0 +1,78 @@
+<mat-card>
+
+    <h2 class="alinear">Agregar Lecturacion</h2>
+    <mat-card-header>
+        <div>
+            <mat-form-field hintLabel="buscar medidor por Id" appearance="fill">
+                <mat-label>Buscar Medidor</mat-label>
+                <input matInput #input (keyup)="buscarOpcion(input.value)">
+            </mat-form-field>
+            <samp style="color: crimson;">{{mensajeNoexisteMedidor}}</samp>
+            <samp style="color: rgb(69, 11, 204);">{{mesajePrimeraLectura}}</samp>
+        </div>
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <table mat-table [dataSource]="dataSource" class="mat-cell">
+            
+            <!-- fecha Lecturacion columna -->
+            <ng-container matColumnDef="mesLecturacion" > <!-- idUsuario nombre de la columna de html tiene que ser la misna del displayedColumns-->
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element">{{element.mesLecturacion}}</td>
+            </ng-container>
+
+            <!-- nombre columna -->
+            <ng-container matColumnDef="lecturaAnterior" > <!-- 'nombre' nombre de la columna de html tiene que ser la misna del displayedColumns-->
+                <th mat-header-cell *matHeaderCellDef> lectura Anterior </th>
+                <td mat-cell *matCellDef="let element">{{element.lecturaAnterior}}</td>
+            </ng-container>
+
+            <!-- Apellido Paterno columna -->
+            <ng-container matColumnDef="lecturaActual" > <!-- ''apellido Paterno'' nombre de la columna de html tiene que ser la misna del displayedColumns-->
+                <th mat-header-cell *matHeaderCellDef> lectura Actual </th>
+                <td mat-cell *matCellDef="let element">{{element.lecturaActual}}</td>
+            </ng-container>
+
+             <!-- Apellido Paterno columna -->
+             <ng-container matColumnDef="consumo" > <!-- ''apellido Paterno'' nombre de la columna de html tiene que ser la misna del displayedColumns-->
+                <th mat-header-cell *matHeaderCellDef> Consumo </th>
+                <td mat-cell *matCellDef="let element">{{element.consumo}}</td>
+            </ng-container>
+                                
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> <!-- displayedColumns se setea del componente usuarios que uno crea-->
+            <tr mat-row *matRowDef="let row; columns : displayedColumns;"></tr>
+
+
+        </table>
+      
+    </mat-card-content>
+    <span style="color: #FF0000;">{{yaMedidorTieneMesLectura}}</span>
+    
+    <mat-card-content>
+        <span >{{data}}</span>
+        <form [formGroup]="lecturaForm" style="margin-top: 10px;">
+            <div class="lectura-container">
+                
+                <mat-form-field >
+                    <input matInput type="number" placeholder="Lectura Actual" formControlName="lecturaActual" required>
+                    <div *ngIf="lecturaForm.get('lecturaActual')?.hasError('esMayor')" style="color: crimson;">
+                        ¡La lectura actual no puede ser menor o igual que la lectura del anterior mes! Lect Ant: {{this.lecturaAnt}}
+                    </div>
+                </mat-form-field>
+                
+            </div>
+        </form>
+        <mat-dialog-actions>
+
+            <button mat-button color="primary" (click)="guardarLecturacion()" [disabled]="lecturaForm.invalid || validarElMes ">
+                <mat-icon>save</mat-icon>Guardar
+            </button>
+            <button mat-button color="primary" (click)="cerrarPantallaGuardar()" >
+                <mat-icon>cancel</mat-icon>Cancelar
+            </button>
+
+        </mat-dialog-actions>
+    </mat-card-content>
+
+</mat-card>

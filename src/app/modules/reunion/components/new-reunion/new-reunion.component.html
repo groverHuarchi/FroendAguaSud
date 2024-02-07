@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>  Nueva Reunion </h2>
+<mat-dialog-content>
+    <span >{{fechaAnho}}</span>
+    <br>
+    <samp style="color: crimson;">{{mensajeExiteReunion}}</samp>
+    <form [formGroup]="ReunionForm" style="margin-top: 15px">
+        <div class="reunion-container">
+            
+           
+            <mat-form-field class="example-full-width">
+                <mat-label>Descripción de la reunión</mat-label>
+                <textarea matInput placeholder="Ej. Puntos a tratar en la reunión" formControlName="descripcion" class=".mat-form-field-autofill-control-textarea" maxlength="255"></textarea>
+                <mat-hint >{{ ReunionForm.get('descripcion')?.value.length }}/255 caracteres como maximo</mat-hint>
+            </mat-form-field>
+           
+            
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-button color="primary"  [disabled]="ReunionForm.invalid" (click)="onSave()" >
+        <mat-icon>save</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="cerrarPantallaGuardar()">
+        <mat-icon>cancel</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>
